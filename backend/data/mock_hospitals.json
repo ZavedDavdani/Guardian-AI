@@ -1,0 +1,50 @@
+[
+  {
+    "id": "h_a",
+    "name": "Hospital A",
+    "area": "Ameerpet",
+    "latitude": 17.4374,
+    "longitude": 78.4482,
+    "total_beds": 20,
+    "available_beds": 2,
+    "icu_total": 20,
+    "icu_available": 2,
+    "specialists": "cardiac,general"
+  },
+  {
+    "id": "h_b",
+    "name": "Hospital B",
+    "area": "Secunderabad",
+    "latitude": 17.4399,
+    "longitude": 78.4983,
+    "total_beds": 28,
+    "available_beds": 11,
+    "icu_total": 28,
+    "icu_available": 18,
+    "specialists": "general,pediatric"
+  },
+  {
+    "id": "h_c",
+    "name": "Hospital C",
+    "area": "Banjara Hills",
+    "latitude": 17.4156,
+    "longitude": 78.4347,
+    "total_beds": 30,
+    "available_beds": 18,
+    "icu_total": 30,
+    "icu_available": 12,
+    "specialists": "orthopedic,trauma"
+  },
+  {
+    "id": "h_d",
+    "name": "Hospital D",
+    "area": "Kukatpally",
+    "latitude": 17.4849,
+    "longitude": 78.4108,
+    "total_beds": 24,
+    "available_beds": 6,
+    "icu_total": 24,
+    "icu_available": 8,
+    "specialists": "general"
+  }
+]

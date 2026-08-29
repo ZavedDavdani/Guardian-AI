@@ -1,0 +1,338 @@
+:root {
+  /* Color system */
+  --bg-app: #f4f6fa;
+  --bg-sidebar: #0a1628;
+  --bg-sidebar-active: #132845;
+  --bg-card: #ffffff;
+  --border-subtle: #e4e8f0;
+
+  --text-primary: #101828;
+  --text-secondary: #5c6b82;
+  --text-inverse: #e8edf7;
+  --text-muted-inverse: #8b9bb8;
+
+  --accent: #2563eb;
+  --accent-glow: rgba(37, 99, 235, 0.18);
+  --critical: #dc2626;
+  --critical-bg: #fef2f2;
+  --warning: #d97706;
+  --warning-bg: #fffbeb;
+  --success: #16a34a;
+  --success-bg: #f0fdf4;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
+  --shadow-elevated: 0 4px 12px rgba(16, 24, 40, 0.08);
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg-app);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-shell { display: flex; height: 100vh; overflow: hidden; }
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  width: 232px;
+  background: var(--bg-sidebar);
+  color: var(--text-inverse);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.sidebar-brand {
+  padding: 20px 18px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sidebar-brand-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sidebar-brand-sub {
+  font-size: 10.5px;
+  color: var(--text-muted-inverse);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+.sidebar-nav { flex: 1; padding: 10px 0; }
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-muted-inverse);
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.15s ease;
+}
+.sidebar-item:hover { color: var(--text-inverse); background: rgba(255,255,255,0.03); }
+.sidebar-item.active {
+  color: var(--text-inverse);
+  background: var(--bg-sidebar-active);
+  border-left-color: var(--accent);
+}
+.sidebar-agents {
+  padding: 14px 18px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.sidebar-agents-title {
+  font-size: 10.5px;
+  color: var(--text-muted-inverse);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.agent-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 4px 0;
+  color: var(--text-inverse);
+}
+.status-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ---------- Top bar ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.topbar-eyebrow {
+  font-size: 10.5px;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.topbar-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--success);
+  background: var(--success-bg);
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+/* ---------- Stat cards ---------- */
+.stat-row { display: flex; gap: 14px; padding: 16px 24px 0; }
+.stat-card {
+  flex: 1;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.stat-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+.stat-label { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+.stat-sub { font-size: 11px; color: var(--success); margin-top: 2px; font-weight: 500; }
+
+/* ---------- Panels ---------- */
+.panel-grid { display: flex; gap: 16px; padding: 16px 24px; }
+.panel {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+}
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.panel-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* ---------- Incident cards ---------- */
+.incident-card {
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--critical);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  transition: transform 0.15s ease;
+}
+.incident-card:hover { transform: translateX(2px); }
+.incident-card.priority-critical { border-left-color: var(--critical); }
+.incident-card.priority-medium { border-left-color: var(--warning); }
+.incident-title { font-weight: 600; font-size: 13.5px; display: flex; justify-content: space-between; }
+.incident-meta { font-size: 11.5px; color: var(--text-secondary); margin-top: 3px; font-family: var(--font-mono); }
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.badge.critical { background: var(--critical-bg); color: var(--critical); }
+.badge.medium { background: var(--warning-bg); color: var(--warning); }
+
+/* ---------- Action plan ---------- */
+.plan-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 13px;
+}
+.plan-row:last-child { border-bottom: none; }
+.plan-victims { font-family: var(--font-mono); font-weight: 600; color: var(--accent); }
+.reasoning-box {
+  background: #f8fafc;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+.reasoning-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+  color: var(--text-secondary);
+}
+.btn-row { display: flex; gap: 8px; margin-top: 12px; }
+.btn {
+  flex: 1;
+  padding: 9px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s ease;
+}
+.btn:hover { opacity: 0.88; }
+.btn-approve { background: var(--accent); color: white; }
+.btn-override { background: white; color: var(--critical); border: 1px solid var(--critical); }
+.btn-approved { background: var(--success-bg); color: var(--success); cursor: default; }
+
+/* ---------- Hospital capacity ---------- */
+.hospital-row { flex: 1; }
+.hospital-name { font-size: 12.5px; font-weight: 600; }
+.hospital-pct { font-family: var(--font-mono); font-size: 20px; font-weight: 700; }
+.capacity-bar { height: 6px; background: #eef1f6; border-radius: 4px; overflow: hidden; margin: 6px 0 4px; }
+.capacity-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+
+/* ---------- Map ---------- */
+.map-container { height: 280px; border-radius: var(--radius-md); overflow: hidden; position: relative; }
+.cluster-pulse {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--critical);
+  animation: cluster-ring 1.8s infinite;
+}
+@keyframes cluster-ring {
+  0% { transform: scale(0.6); opacity: 0.7; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================
+   Incident Severity Colors
+========================================== */
+
+.incident-card.severity-red {
+  border-left-color: var(--critical);
+}
+
+.incident-card.severity-yellow {
+  border-left-color: var(--warning);
+}
+
+.incident-card.severity-green {
+  border-left-color: var(--success);
+}
+
+.badge.red {
+  background: var(--critical-bg);
+  color: var(--critical);
+}
+
+.badge.yellow {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.badge.green {
+  background: var(--success-bg);
+  color: var(--success);
+}
